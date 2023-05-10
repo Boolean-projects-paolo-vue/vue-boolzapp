@@ -1,0 +1,107 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+}
+
+
+body {
+    display: grid;
+    /* place-items: center; */
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #009688 20%,
+        #D8DBD5 20%
+    );
+}
+
+.container{
+    background-color: white;
+    height: 90vh;
+    margin-top: 5vh;
+    max-width: 1500px; 
+    display: flex;
+    flex-direction: row;
+}
+
+/*--************** Sub-container contact *******************--*/
+
+.sub-container{
+    /* background-color: aquamarine; */
+    height: 100% ;
+    width: 25%;
+}
+
+.avatar{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 80%;
+}
+
+.img-avatar{
+    width: 15%;
+
+}
+
+.icons{
+    width: 20%; 
+}
+
+.container_contact{
+    overflow-y: scroll;
+}
+
+
+
+
+/*--************** Sub-container2 chat *******************--*/
+
+.sub-container2{
+    /* background-color: blue; */
+    height: 100%;
+    width: 75%;
+}
+
+.icons_chat{
+    width: 20%;
+    display: flex;
+    justify-content: end; 
+}
+
+.footer-chat{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*********************** Head *************************/
+
+.head-chat{
+    height: 8%;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 0.5rem;
+}
+
+/*********************** Main *************************/
+
+.main-chat{
+    height: 84%;
+    /* background-color: gray; */
+}
+
+
+/*********************** Footer *************************/
+
+.footer-chat{
+    height: 8%;
+    background-color: whitesmoke;
+}
