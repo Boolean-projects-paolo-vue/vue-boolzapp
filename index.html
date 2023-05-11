@@ -78,7 +78,6 @@
                 style="border: 1px solid whitesmoke;"
                 >
                     <img 
-                    
                     :src="item.avatar"
                     :alt="item.avatar"
                     class="rounded-5"
@@ -104,8 +103,11 @@
                     :src="contacts[activeIndex].avatar" 
                     alt=""
                     class="img_avatar rounded-5"
-                    style="height: 3rem; width: 3rem; border: 1px solid black;">
-                    <div class="name p-2" style="font-size: 15px;">{{ contacts[activeIndex].name }}</div>
+                    style="height: 3rem; width: 3rem; border: 1px solid black;"
+                    >
+                    <div class="name p-2" style="font-size: 15px;">
+                    {{ contacts[activeIndex].name }}
+                    </div>
                     
                 </div>
                 
@@ -138,7 +140,8 @@
                 <div class="sub_main_chat">
                     <div class="discussion">
                         <div
-                        v-for="(mex) in contacts[activeIndex].messages"
+                        v-for="mex in contacts[activeIndex].messages"
+                        :key="mex.date"
                         :class="mex.status == 'sent' ? 'sent' : 'received'"
                         >
                         {{mex.message}} <span>{{mex.date}}</span>

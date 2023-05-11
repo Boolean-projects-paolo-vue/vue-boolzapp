@@ -186,7 +186,7 @@ const app = Vue.createApp({
 
             };
             this.contacts[this.activeIndex].messages.push(newMex);
-            setTimeout(this.cpuMessage, 2000)
+            setTimeout(this.cpuMessage, 1000)
         },
         cpuMessage() {
             let cpuMex = {

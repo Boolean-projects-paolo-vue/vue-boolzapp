@@ -144,11 +144,14 @@ body {
     
 }
 
-.messagge.io{
+.discussion .sent{
     background-color: green;
+    height: 2rem;
+    padding: 2rem;
+
 }
 
-.messagge.answer{
+.discussion .received{
     background-color: white;
 }
 
@@ -157,4 +160,8 @@ body {
 .footer-chat{
     height: 8%;
     background-color: whitesmoke;
+}
+
+.container_contact .contact:hover{
+    background-color: aqua;
 }
