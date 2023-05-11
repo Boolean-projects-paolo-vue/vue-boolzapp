@@ -20,7 +20,7 @@
     <div class="container p-0">
         <div class="sub-container contact">
 
-            <header class="head-chat" style="border: 2px solid lightgrey;">
+            <header class="head_chat" style="border: 2px solid lightgrey;">
                 <div class="avatar">
 
                     <img 
@@ -51,31 +51,37 @@
             </header>
 
             <main class="main_contact">
-                <div class="d-flex align-items-center" style="background-color: rgb(124, 192, 237); height: 4rem;">
-                    <div class=" d-flex align-items-center p-2 m-2 rounded-5" style="background-color: aliceblue; height: 2rem;">
-                        <i class="bi bi-bell-slash-fill" style="color:rgb(124, 192, 237);"></i>
+                <div class="notific_messagge d-flex align-items-center" style="background-color: rgb(124, 192, 237);">
+                    <div class=" d-flex align-items-center p-3 m-2 rounded-5" style="background-color: aliceblue; height: 3rem;">
+                        <i class="bi bi-bell-slash-fill" style="color:rgb(124, 192, 237); font-size: 16px;"></i>
+                    </div>
+                    <div class="d-flex flex-column" style="font-size: 12px;">
+                        <span>Ricevi notifiche di nuovi messaggi</span>
+                        <a href="">Attiva notifiche desktop</a>
                     </div>
                 </div>
-                <input type="text" placeholder="Cerca o inizia una nuova chat" style="width: 100%;">
+                <input class="search_bar" type="text" placeholder="Cerca o inizia una nuova chat" style="width: 96%;">
             </main>
 
-            <div class="container_contact" style="height: 81%;">
+            <div class="container_contact" style="height: 79%;">
                 <div 
                 v-for="(item, index) in contacts"
-                :class="{active: index == activeIndex}"
+                :key="item.avatar"
+                :@click="activeChat(index)"
                 class=" contact d-flex flex-row align-items-center py-2 px-3"
+                style="border: 1px solid whitesmoke;"
                 >
                     <img 
-                    :key="item"
+                    
                     :src="item.avatar"
                     :alt="item.avatar"
                     class="rounded-5"
                     style="height: 50px;"
                     >
-                    <div>
-                        <h6 class="p-2">{{ item.name }}</h6>
+                    <div class="p-2" style="font-size: 12px;">
+                        <span>{{ item.name }}</span>
                     <!-- <div>{{item.messagges[].date}}</div> --> 
-                        <div class="date">{{item.messages[item.messages.length - 1].date}}</div>   
+                        <div class="date">{{item.messages[item.messages.length - 1].message}}</div>   
                     </div>
                     
                 </div>
@@ -86,44 +92,57 @@
 
         <div class="sub-container2 chat ">
             <header class="head-chat" style="border: 2px solid lightgrey; border-left: 0px;">
-                <div class="avatar">
-
+                
+                <div class="avatar ">
                     <img 
-                    :src="contacts.avatar" 
+                    :src="contacts[activeIndex].avatar" 
                     alt=""
-                    class="img-avatar rounded-5"
-                    style="width: 5%; border: 1px solid black;"
-                    >
-                    <span class="p-2" style="font-weight: 600;">{{ user.name }}
-                    </span>
-
+                    class="img_avatar rounded-5"
+                    style="height: 3rem; width: 3rem; border: 1px solid black;">
+                    <div class="name p-2" style="font-size: 15px;">{{ contacts[activeIndex].name }}</div>
+                    
                 </div>
+                
 
                 <!--------------- Scritto con Html --------------------->
 
-                <!-- <div class="avatar-2">
-                    <div class="rounded-5" style="width: 5%; border: 1px solid black;">
-                        <img src="img/avatar_io.jpg" alt="" class="img-avatar rounded-5" style="width: 100%;">
+                <!-- <div class="avatar ">
+                    <div class="rounded-5" style="width:5%; border: 1px solid black;">
+                        <img src="img/avatar_1.jpg" alt="" class="img-avatar rounded-5" style="width: 100%;">
                     </div>
-                    <span class="p-1" style="font-weight: 600;">
-                        Sofia
-                    </span>
+                    <div class="d-flex flex-column justify-content-center p-2">
+                        <span style="font-weight: 600;">
+                            Michele
+                        </span>
+                        <span>Ultimo accesso oggi alle 12.00</span>
+                    </div>
+                    
                 </div> -->
 
 
                 
 
-                <div class="icons_chat" style="color:grey">
-                    <i class="fa-sharp fa-solid fa-circle-notch p-1"></i>
-                    <i class="fa-solid fa-message p-1"></i>
-                    <i class="fa-solid fa-ellipsis-vertical p-1"></i>
-
+                <div class="icons_chat d-flex align-items-center" style="color:grey; font-size: 20px;">
+                    <i class="bi bi-search p-2"></i></i>
+                    <i class="fa-sharp fa-solid fa-paperclip p-2"></i>
+                    <i class="fa-solid fa-ellipsis-vertical p-2"></i>
                 </div>
             </header>
             <main class="main-chat">
-                <img src="img/mine.jpg" alt="" style="width: 100%; height: 100%;">
+                <div class="sub_main_chat">
+                    <div 
+                    class="d-flex align-items-end flex-column">
+                        <div class="messagge io rounded-2"></div>
+                        <div class="messagge io rounded-2"></div>
+                    </div>
+                    <div>
+                        <div class="messagge answer rounded-2"></div>
+                    </div>
+                    
+                </div>
+              
             </main>
-            <footer class="footer-chat" style="border: 2px solid lightgrey;">
+            <footer class="footer-chat" style="font-size: 20px;">
                 <i class="bi bi-emoji-smile p-2"></i>
                 <div class="p-2" style="width: 90%;">
                     <input type="text" placeholder="Scrivi un messaggio" style="width: 100%; border: 0px;" class="rounded-3 p-2">

@@ -34,6 +34,18 @@ body {
     width: 25%;
 }
 
+/*********************** Head *************************/
+
+.head_chat{
+    height: 8%;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 0.5rem;
+}
+
 .avatar{
     display: flex;
     align-items: center;
@@ -41,7 +53,7 @@ body {
     width: 80%;
 }
 
-.img-avatar{
+.img_avatar{
     width: 15%;
 
 }
@@ -50,12 +62,29 @@ body {
     width: 20%; 
 }
 
-.container_contact{
-    overflow-y: scroll;
+
+
+/*********************** Main *************************/
+
+.main_contact{
+    height: 12%;
+}
+
+.notific_messagge{
+    height: 60%;
+}
+
+.search_bar{
+    height: 30%;
+    padding: 1rem;
+    margin: 0.5rem;
 }
 
 
-
+.container_contact{
+    overflow-y: scroll;
+    margin-top: 0.5rem;
+}
 
 /*--************** Sub-container2 chat *******************--*/
 
@@ -93,11 +122,35 @@ body {
 
 /*********************** Main *************************/
 
+
 .main-chat{
     height: 84%;
+    background-image: url("../img/mine.jpg");
     /* background-color: gray; */
+    overflow-y: scroll;
+}
+.sub_main_chat{
+    margin: 2.5rem;
+    height: 91%;
 }
 
+.messagge{
+    height: 2.5rem;
+    width: 14rem;
+    padding: 1.5rem;
+    margin-right: 3rem;
+    margin-left: 3rem;
+    margin-bottom: 0.5rem;
+    
+}
+
+.messagge.io{
+    background-color: green;
+}
+
+.messagge.answer{
+    background-color: white;
+}
 
 /*********************** Footer *************************/
 
