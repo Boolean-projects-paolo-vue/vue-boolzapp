@@ -60,14 +60,20 @@
                         <a href="">Attiva notifiche desktop</a>
                     </div>
                 </div>
-                <input class="search_bar" type="text" placeholder="Cerca o inizia una nuova chat" style="width: 96%;">
+                <input 
+                class="search_bar" 
+                type="text" 
+                placeholder="Cerca o inizia una nuova chat" 
+                style="width: 96%;"
+                v-model="searchCont"
+                >
             </main>
 
             <div class="container_contact" style="height: 79%;">
                 <div 
-                v-for="(item, index) in contacts"
-                :key="item.avatar"
-                :@click="activeChat(index)"
+                v-for="(item, index) in filter"
+                :key="index"
+                @click="activeChat(index)"
                 class=" contact d-flex flex-row align-items-center py-2 px-3"
                 style="border: 1px solid whitesmoke;"
                 >
@@ -130,14 +136,15 @@
             </header>
             <main class="main-chat">
                 <div class="sub_main_chat">
-                    <div 
-                    class="d-flex align-items-end flex-column">
-                        <div class="messagge io rounded-2"></div>
-                        <div class="messagge io rounded-2"></div>
+                    <div class="discussion">
+                        <div
+                        v-for="(mex) in contacts[activeIndex].messages"
+                        :class="mex.status == 'sent' ? 'sent' : 'received'"
+                        >
+                        {{mex.message}} <span>{{mex.date}}</span>
+                        </div>
                     </div>
-                    <div>
-                        <div class="messagge answer rounded-2"></div>
-                    </div>
+                    
                     
                 </div>
               
@@ -145,7 +152,14 @@
             <footer class="footer-chat" style="font-size: 20px;">
                 <i class="bi bi-emoji-smile p-2"></i>
                 <div class="p-2" style="width: 90%;">
-                    <input type="text" placeholder="Scrivi un messaggio" style="width: 100%; border: 0px;" class="rounded-3 p-2">
+                    <input 
+                        type="text"
+                        placeholder="Scrivi un messaggio" 
+                        style="width: 100%; border: 0px;" 
+                        class="rounded-3 p-2"
+                        v-model="newMessage"
+                        @keyup.enter="addMessage(newMessage)"
+                    >
                 </div>
                 <i class="bi bi-mic-fill p-2"></i>
                 

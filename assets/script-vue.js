@@ -2,10 +2,11 @@ const app = Vue.createApp({
     data() {
         return {
             activeIndex: 0,
-            newMessage:'',
-            user:{
+            newMessage: '',
+            searchCont: '',
+            user: {
                 name: 'Sofia',
-                avatar:'img/avatar_io.jpg',
+                avatar: 'img/avatar_io.jpg',
             },
             contacts: [
                 {
@@ -176,8 +177,34 @@ const app = Vue.createApp({
         activeChat(index) {
             this.activeIndex = index
         },
+
+        addMessage(nuovoMessaggio) {
+            let newMex = {
+                date: '10/01/2020 15.30.00',
+                message: nuovoMessaggio,
+                status: 'sent',
+
+            };
+            this.contacts[this.activeIndex].messages.push(newMex);
+            setTimeout(this.cpuMessage, 2000)
+        },
+        cpuMessage() {
+            let cpuMex = {
+                date: '10/01/2020 15.31.00',
+                message: 'What?',
+                status: 'received',
+
+            };
+            this.contacts[this.activeIndex].messages.push(cpuMex);
+        },
     },
-    
+    computed: {
+        filter() {
+            return this.contacts.filter((contacts) => {
+                return contacts.name.toLowerCase().includes(this.searchCont.toLowerCase())
+            }
+        )}
+    },
 });
 
 app.mount('.container')
