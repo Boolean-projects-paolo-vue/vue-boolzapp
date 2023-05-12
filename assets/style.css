@@ -133,6 +133,9 @@ body {
     margin: 2.5rem;
     height: 91%;
 }
+.container_contact .contact.active{
+    background-color: lightgrey;
+}
 
 .messagge{
     height: 2.5rem;
@@ -144,16 +147,23 @@ body {
     
 }
 
-.discussion .sent{
-    background-color: green;
-    height: 2rem;
-    padding: 2rem;
+.discussion .green{
+    background-color: #4af805b9;
+    align-self: end;
+    align-items: end;
+    padding: .5rem;
+    
 
 }
 
-.discussion .received{
+.discussion .white{
     background-color: white;
+    align-self: start;
+    padding: .5rem;
+   
 }
+
+
 
 /*********************** Footer *************************/
 
@@ -162,6 +172,15 @@ body {
     background-color: whitesmoke;
 }
 
+
+
+
+
+
+
+
+/*********************** hover *************************/
+
 .container_contact .contact:hover{
-    background-color: aqua;
+    background-color: whitesmoke;
 }

@@ -175,7 +175,7 @@ const app = Vue.createApp({
     },
     methods: {
         activeChat(index) {
-            this.activeIndex = index
+            this.activeIndex = this.contacts.indexOf(index);
         },
 
         addMessage(nuovoMessaggio) {
@@ -183,20 +183,31 @@ const app = Vue.createApp({
                 date: '10/01/2020 15.30.00',
                 message: nuovoMessaggio,
                 status: 'sent',
-
             };
             this.contacts[this.activeIndex].messages.push(newMex);
-            setTimeout(this.cpuMessage, 1000)
+            this.newMessage = '';
+            setTimeout(this.cpuMessage, 1000);
         },
+
         cpuMessage() {
             let cpuMex = {
                 date: '10/01/2020 15.31.00',
                 message: 'What?',
                 status: 'received',
-
             };
             this.contacts[this.activeIndex].messages.push(cpuMex);
         },
+        extractTimeFromDate(date){
+            return date.split(' ')[1].slice(0, -3)
+        },
+        returnDate(dateNow) {
+            return luxon.DateTime.now(dateNow).toFormat('HH:mm:ss');
+        },
+
+        deleteItem(index){
+            this.contacts[this.activeIndex].messages.splice(index, 1);
+        }  
+        
     },
     computed: {
         filter() {
@@ -204,7 +215,7 @@ const app = Vue.createApp({
                 return contacts.name.toLowerCase().includes(this.searchCont.toLowerCase())
             }
         )}
-    },
+    },  
 });
 
 app.mount('.container')

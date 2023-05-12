@@ -55,16 +55,19 @@
                     <div class=" d-flex align-items-center p-3 m-2 rounded-5" style="background-color: aliceblue; height: 3rem;">
                         <i class="bi bi-bell-slash-fill" style="color:rgb(124, 192, 237); font-size: 16px;"></i>
                     </div>
-                    <div class="d-flex flex-column" style="font-size: 12px;">
+                    <div 
+                    
+                    Ultimo accesso oggi
+                    class="d-flex flex-column" style="font-size: 12px;">
                         <span>Ricevi notifiche di nuovi messaggi</span>
                         <a href="">Attiva notifiche desktop</a>
                     </div>
                 </div>
                 <input 
-                class="search_bar" 
                 type="text" 
-                placeholder="Cerca o inizia una nuova chat" 
+                class="search_bar" 
                 style="width: 96%;"
+                placeholder="Cerca o inizia una nuova chat" 
                 v-model="searchCont"
                 >
             </main>
@@ -73,8 +76,9 @@
                 <div 
                 v-for="(item, index) in filter"
                 :key="index"
-                @click="activeChat(index)"
+                @click="activeChat(item)"
                 class=" contact d-flex flex-row align-items-center py-2 px-3"
+                :class="{active: index == activeIndex}"
                 style="border: 1px solid whitesmoke;"
                 >
                     <img 
@@ -88,8 +92,14 @@
                     <!-- <div>{{item.messagges[].date}}</div> --> 
                         <div class="date">{{item.messages[item.messages.length - 1].message}}</div>   
                     </div>
+                    <span 
+                    class="time"
+                    style="font-size: 10px;"
+                    >
+                    {{ extractTimeFromDate(item.messages[item.messages.length - 1].date) }}</span>
                     
                 </div>
+                
             </div>
             
 
@@ -105,9 +115,11 @@
                     class="img_avatar rounded-5"
                     style="height: 3rem; width: 3rem; border: 1px solid black;"
                     >
-                    <div class="name p-2" style="font-size: 15px;">
-                    {{ contacts[activeIndex].name }}
+                    <div class="name p-2 d-flex flex-column" style="font-size: 15px;font-weight: 700;">
+                        {{ contacts[activeIndex].name }}
+                        <span style="font-weight: 400;"> Ultimo accesso oggi alle {{returnDate(dateNow)}}</span>
                     </div>
+                    
                     
                 </div>
                 
@@ -138,13 +150,25 @@
             </header>
             <main class="main-chat">
                 <div class="sub_main_chat">
-                    <div class="discussion">
+                    <div class="discussion d-flex flex-column">
+                        
                         <div
-                        v-for="mex in contacts[activeIndex].messages"
+                        v-for="(mex, index) in contacts[activeIndex].messages"
                         :key="mex.date"
-                        :class="mex.status == 'sent' ? 'sent' : 'received'"
+                        :class="mex.status == 'sent' ? 'green' : 'white'"
+                        class="rounded-3 d-flex flex-column justify-content-center mb-2"
+                        style="width: 15rem; font-size: 15px;"
                         >
-                        {{mex.message}} <span>{{mex.date}}</span>
+
+                        <div>
+                            {{mex.message}}
+                            <i 
+                            class="bi bi-playstation"
+                            @click="deleteItem(Index)"
+                            ></i> 
+                        </div>
+                        <span class="date" style="font-size: 12px;">{{ extractTimeFromDate(mex.date) }}</span>
+                        
                         </div>
                     </div>
                     
@@ -173,7 +197,9 @@
 
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <script src="assets/script-vue.js"></script>
+    
 </body>
 
 </html>
