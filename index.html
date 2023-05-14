@@ -77,27 +77,33 @@
                 v-for="(item, index) in filter"
                 :key="index"
                 @click="activeChat(item)"
-                class=" contact d-flex flex-row align-items-center py-2 px-3"
+                class=" contact d-flex flex-row justify-content-between py-2 px-3"
                 :class="{active: index == activeIndex}"
                 style="border: 1px solid whitesmoke;"
                 >
-                    <img 
-                    :src="item.avatar"
-                    :alt="item.avatar"
-                    class="rounded-5"
-                    style="height: 50px;"
-                    >
-                    <div class="p-2" style="font-size: 12px;">
-                        <span>{{ item.name }}</span>
-                    <!-- <div>{{item.messagges[].date}}</div> --> 
-                        <div class="date">{{item.messages[item.messages.length - 1].message}}</div>   
+
+                    <div class="d-flex flex-row align-items-center ">
+                        <img 
+                        :src="item.avatar"
+                        :alt="item.avatar"
+                        class="rounded-5"
+                        style="height: 50px;"
+                        >
+                        <div class="p-2" style="font-size: 12px;">
+                            <span style="font-weight: 700;">{{ item.name }}</span>
+                        <!-- <div>{{item.messagges[].date}}</div> --> 
+                            <div class="date">{{item.messages[item.messages.length - 1].message}}</div>   
+                        </div>
                     </div>
-                    <span 
-                    class="time"
-                    style="font-size: 10px;"
-                    >
-                    {{ extractTimeFromDate(item.messages[item.messages.length - 1].date) }}</span>
-                    
+                    <div>
+                        <span 
+                            class="time"
+                            style="font-size: 10px;"
+                            >
+                            {{ extractTimeFromDate(item.messages[item.messages.length - 1].date) }}
+                        </span>
+                    </div>  
+
                 </div>
                 
             </div>
@@ -160,12 +166,27 @@
                         style="width: 15rem; font-size: 15px;"
                         >
 
-                        <div>
-                            {{mex.message}}
-                            <i 
-                            class="bi bi-playstation"
-                            @click="deleteItem(Index)"
-                            ></i> 
+                        <div class="d-flex">
+                            <div class="messagge">{{mex.message}}</div>
+                            <div class="logo-x">
+                                <div 
+                                class="dropdown"
+                                >
+                                    <button 
+                                    class="btn btn-secondary dropdown-toggle p-0 m-0" 
+                                    style= "border: 0; color: black;"
+                                    type="button" 
+                                    data-bs-toggle="dropdown" 
+                                    aria-expanded="false">
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#">info</a></li>
+                                      <li
+                                      @click="deleteItem(Index)"
+                                      ><a class="dropdown-item" href="#">Cancella messaggio</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <span class="date" style="font-size: 12px;">{{ extractTimeFromDate(mex.date) }}</span>
                         

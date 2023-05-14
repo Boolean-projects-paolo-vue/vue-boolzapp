@@ -80,10 +80,13 @@ body {
     margin: 0.5rem;
 }
 
-
 .container_contact{
     overflow-y: scroll;
     margin-top: 0.5rem;
+}
+
+.time{
+    align-self: flex-start;
 }
 
 /*--************** Sub-container2 chat *******************--*/
@@ -138,13 +141,8 @@ body {
 }
 
 .messagge{
-    height: 2.5rem;
-    width: 14rem;
-    padding: 1.5rem;
-    margin-right: 3rem;
-    margin-left: 3rem;
-    margin-bottom: 0.5rem;
-    
+    height: 1.5rem;
+    width: 13rem;
 }
 
 .discussion .green{
@@ -159,11 +157,21 @@ body {
 .discussion .white{
     background-color: white;
     align-self: start;
-    padding: .5rem;
-   
+    padding: .5rem;  
 }
 
+.logo-x{
+    justify-self: end;
+    margin-left: 0.5rem;
+}
 
+.dropdown-toggle{
+    background-color: #00968700;
+}
+
+.date{
+    align-self: flex-end;
+}
 
 /*********************** Footer *************************/
 

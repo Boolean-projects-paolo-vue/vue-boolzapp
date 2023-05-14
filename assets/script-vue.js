@@ -201,7 +201,7 @@ const app = Vue.createApp({
             return date.split(' ')[1].slice(0, -3)
         },
         returnDate(dateNow) {
-            return luxon.DateTime.now(dateNow).toFormat('HH:mm:ss');
+            return luxon.DateTime.now(dateNow).toFormat('HH:mm');
         },
 
         deleteItem(index){
