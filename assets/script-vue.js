@@ -185,7 +185,9 @@ const app = Vue.createApp({
                 status: 'sent',
             };
             this.contacts[this.activeIndex].messages.push(newMex);
+            /*let activeChat = activeIndex*/
             this.newMessage = '';
+
             setTimeout(this.cpuMessage, 1000);
         },
 
