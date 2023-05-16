@@ -11,7 +11,8 @@
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"
-        defer></script>
+        defer>
+    </script>
     <link rel="stylesheet" href="assets/style.css">
     <title>Document</title>
 </head>
@@ -82,7 +83,7 @@
                 style="border: 1px solid whitesmoke;"
                 >
 
-                    <div class="d-flex flex-row align-items-center ">
+                    <div class="d-flex flex-row align-items-center">
                         <img 
                         :src="item.avatar"
                         :alt="item.avatar"
@@ -91,7 +92,6 @@
                         >
                         <div class="p-2" style="font-size: 12px;">
                             <span style="font-weight: 700;">{{ item.name }}</span>
-                        <!-- <div>{{item.messagges[].date}}</div> --> 
                             <div class="date">{{item.messages[item.messages.length - 1].message}}</div>   
                         </div>
                     </div>
@@ -198,7 +198,45 @@
               
             </main>
             <footer class="footer-chat" style="font-size: 20px;">
-                <i class="bi bi-emoji-smile p-2"></i>
+                <div 
+                class="dropdown"
+                >
+                    <button 
+                    class="btn p-0 m-0" 
+                    style= "border: 0;;"
+                    type="button" 
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false">
+                    <i class="bi bi-emoji-smile p-2"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <template v-for="(emoji, index) in emojiArr">
+                            <span @click="addEmoji(index)">{{emoji}}</span>
+                        </template>
+                    </div>
+                </div>
+
+                <div 
+                class="dropdown icon"
+                >
+                    <button 
+                    class="btn p-0 m-0" 
+                    style= "border: 0;;"
+                    type="button" 
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false">
+                    <i class="bi bi-paperclip"></i>
+                    </button>
+                    <div class="dropdown-menu menu-app flex-column">
+                        <template v-for="(clip, indice) in attached">
+                            <i :class="['fa', attached[indice]]" 
+                            class="p-1"
+                            style="font-size: 20px;"
+                            ></i>
+                        </template>
+                    </div>
+                </div>
+                
                 <div class="p-2" style="width: 90%;">
                     <input 
                         type="text"
@@ -209,8 +247,11 @@
                         @keyup.enter="addMessage(newMessage)"
                     >
                 </div>
-                <i class="bi bi-mic-fill p-2"></i>
+               
                 
+                <div>
+                    <i class="bi bi-mic-fill p-2"></i>
+                </div>
             </footer>
 
         </div>

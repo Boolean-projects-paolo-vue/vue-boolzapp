@@ -180,15 +180,17 @@ body {
     background-color: whitesmoke;
 }
 
-
-
-
-
-
-
-
+.dropdown-menu.menu-app {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 /*********************** hover *************************/
 
 .container_contact .contact:hover{
     background-color: whitesmoke;
 }
+
+.dropdown:hover .dropdown_menu_attach {
+    display: block;
+  }
