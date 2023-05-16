@@ -207,9 +207,12 @@
                     type="button" 
                     data-bs-toggle="dropdown" 
                     aria-expanded="false">
-                    <i class="bi bi-emoji-smile p-2"></i>
+                    <i class="bi bi-emoji-smile p-2"
+                       style="font-size: 25px;"
+                       ></i>
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu"
+                         style="font-size: 18px;">
                         <template v-for="(emoji, index) in emojiArr">
                             <span @click="addEmoji(index)">{{emoji}}</span>
                         </template>
@@ -225,16 +228,21 @@
                     type="button" 
                     data-bs-toggle="dropdown" 
                     aria-expanded="false">
-                    <i class="bi bi-paperclip"></i>
+                    <i class="bi bi-paperclip" style="font-size: 25px;"></i>
                     </button>
-                    <div class="dropdown-menu menu-app flex-column">
-                        <template v-for="(clip, indice) in attached">
-                            <i :class="['fa', attached[indice]]" 
-                            class="p-1"
-                            style="font-size: 20px;"
-                            ></i>
-                        </template>
+                    <div class="dropdown-menu menu_app">
+                        <div class="d-flex flex-column" v-for="(clip, index) in attached">
+                            <div class="icons_container" :style="{ backgroundColor: colors[index % colors.length] }">
+                                <!-- <button id="file_input" @click="openFilePicker"> -->
+                                    <i :class="['fa', attached[index]]" style="font-size: 25px;"
+                                    class="icon_footer"></i>
+                                <!-- </button> -->
+                                <!-- <input id="file_input" type="file" ref="fileInput"  @change="handleFileInputChange"> -->
+                            </div>
+    
+                        </div>
                     </div>
+
                 </div>
                 
                 <div class="p-2" style="width: 90%;">
@@ -250,7 +258,9 @@
                
                 
                 <div>
-                    <i class="bi bi-mic-fill p-2"></i>
+                    <i class="bi bi-mic-fill p-2"
+                        style="font-size: 25px;"
+                        ></i>
                 </div>
             </footer>
 

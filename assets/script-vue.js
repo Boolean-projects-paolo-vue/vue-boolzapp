@@ -261,6 +261,12 @@ const app = Vue.createApp({
                 "fa-file",
                 "fa-volume-up" 
             ],
+            colors:[
+                'red',
+                'blue',
+                'green',
+                'violet',
+            ],
         }
     },
     methods: {
@@ -301,9 +307,6 @@ const app = Vue.createApp({
         },  
         addEmoji(index) {
             this.newMessage += ` ${this.emojiArr[index]} `
-        },
-        addClip(indice) {
-            this.newMessage += ` ${this.attached[indice]} `
         },
     },
     computed: {
